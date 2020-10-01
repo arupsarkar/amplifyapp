@@ -30,8 +30,15 @@ function App() {
   }, []);
 
   async function fetchNotes() {
-    const apiData = await API.graphql({ query: listNotes }) as {data : getNotes};
-    setNotes(apiData.data.listNotes.items);
+    try{
+      console.log('fetching notes.. started')
+      const apiData = await API.graphql({ query: listNotes }) as {data : getNotes};
+      console.log('notes fetched ', JSON.stringify(apiData))
+      setNotes(apiData.data.listNotes.items);
+    }catch(e) {
+      console.log('error fetching notes ', e)
+    }
+
   }
 
   async function createNote() {
