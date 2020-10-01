@@ -10,7 +10,6 @@ import config from './aws-exports';
 import * as serviceWorker from './serviceWorker';
 
 Amplify.configure(config);
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
